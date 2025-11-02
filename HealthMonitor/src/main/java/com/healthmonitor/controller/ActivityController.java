@@ -21,7 +21,6 @@ import java.util.stream.Collectors;
  */
 @RestController
 @RequestMapping("/api/users/{userId}/activities")
-@CrossOrigin(origins = "*")
 public class ActivityController {
     
     private final ActivityService activityService;

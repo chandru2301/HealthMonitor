@@ -21,7 +21,6 @@ import java.util.stream.Collectors;
  */
 @RestController
 @RequestMapping("/api/users/{userId}/metrics")
-@CrossOrigin(origins = "*")
 public class HealthMetricsController {
     
     private final HealthMetricsService healthMetricsService;

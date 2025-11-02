@@ -20,7 +20,6 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/api/users/{userId}/dashboard")
-@CrossOrigin(origins = "*")
 public class HealthMonitorController {
     
     private final UserService userService;

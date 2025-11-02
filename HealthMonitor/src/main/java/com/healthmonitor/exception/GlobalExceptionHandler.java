@@ -39,7 +39,8 @@ public class GlobalExceptionHandler {
     public ResponseEntity<Map<String, String>> handleIllegalArgumentException(
             IllegalArgumentException ex) {
         Map<String, String> error = new HashMap<>();
-        error.put("error", ex.getMessage());
+        error.put("error", ex.getMessage() != null ? ex.getMessage() : "Invalid request");
+        error.put("message", ex.getMessage() != null ? ex.getMessage() : "Invalid request");
         return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
     }
     
@@ -49,7 +50,9 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(Exception.class)
     public ResponseEntity<Map<String, String>> handleGenericException(Exception ex) {
         Map<String, String> error = new HashMap<>();
-        error.put("error", "An unexpected error occurred: " + ex.getMessage());
+        String message = ex.getMessage() != null ? ex.getMessage() : "An unexpected error occurred";
+        error.put("error", message);
+        error.put("message", message);
         return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }
